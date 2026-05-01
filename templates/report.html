@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Step 3 - Report</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <main class="container">
+    <h1>Step 3: AI Report</h1>
+    <p class="subtitle">Career plan for {{ report.name }}</p>
+
+    <section class="card">
+      <p><strong>Target Career:</strong> {{ report.career }}</p>
+      <p><strong>Matched Skills:</strong> {{ report.matched|join(', ') if report.matched else 'None yet' }}</p>
+      <p><strong>Missing Skills:</strong> {{ report.missing|join(', ') if report.missing else 'Great! No major skill gaps.' }}</p>
+
+      <h3>30/60/90 Day Roadmap</h3>
+      <ul>
+        <li><strong>First 30 days:</strong> {{ report.roadmap['30_days']|join(', ') if report.roadmap['30_days'] else 'Practice projects' }}</li>
+        <li><strong>Next 60 days:</strong> {{ report.roadmap['60_days']|join(', ') if report.roadmap['60_days'] else 'Build intermediate apps' }}</li>
+        <li><strong>Final 90 days:</strong> {{ report.roadmap['90_days']|join(', ') if report.roadmap['90_days'] else 'Mock interviews + portfolio' }}</li>
+      </ul>
+
+      <h3>Suggested Learning Resources</h3>
+      <ul>
+        {% for skill, course in report.courses.items() %}
+          <li><strong>{{ skill }}:</strong> {{ course }}</li>
+        {% endfor %}
+      </ul>
+
+      <div class="row-buttons">
+        <a class="btn-link" href="/skills">Back to Skills</a>
+        <a class="btn-link danger" href="/logout">Logout</a>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

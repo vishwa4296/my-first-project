@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Step 2 - Skills</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <main class="container">
+    <h1>Welcome {{ name }} 👋</h1>
+    <p class="subtitle">Step 2: Enter Career Goal and Skills</p>
+
+    <section class="card">
+      <form method="POST">
+        <label>Target Career</label>
+        <select name="career">
+          {% for career in careers %}
+            <option value="{{ career }}">{{ career }}</option>
+          {% endfor %}
+        </select>
+
+        <label>Current Skills (comma separated)</label>
+        <textarea name="skills" rows="4" placeholder="Python, Excel, SQL"></textarea>
+
+        <button type="submit">Generate Report</button>
+      </form>
+    </section>
+  </main>
+</body>
+</html>
